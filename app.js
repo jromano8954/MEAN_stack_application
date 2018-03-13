@@ -4,9 +4,13 @@ var app = express();
 var path = require('path');
 
 app.set('port',3000);
+//Making public folder static
+app.use(express.static(path.join(__dirname,'public')));
 
 //req = request object, res = response object 
 //send homepage file
+/* No longer need to set root page since we set a folder to be static
+it can directly send us to index.html without this block of code 
 app.get('/',function(req,res){
     console.log("GET the homepage");
     //Sending a response with setting a http status code 
@@ -15,6 +19,7 @@ app.get('/',function(req,res){
     .sendFile(path.join(__dirname,'public','index.html'));
     //.send('Express yourself');
 });
+*/
 //send json file
 app.get('/json',function(req,res){
     console.log("GET the json");
