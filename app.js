@@ -4,7 +4,15 @@ var app = express();
 var path = require('path');
 
 app.set('port',3000);
+//Logs only files in /css 
+//app.use('/css',function(req,res,next){
+app.use(function(req,res,next){
+    console.log(req.method,req.url);
+    next();
+});
+
 //Making public folder static
+//middleware
 app.use(express.static(path.join(__dirname,'public')));
 
 //req = request object, res = response object 
