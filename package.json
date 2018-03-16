@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/jromano8954/MEAN_stack_application#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2"
   },
   "devDependencies": {
