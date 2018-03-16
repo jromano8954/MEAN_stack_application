@@ -6,6 +6,10 @@ var ctrlHotels = require('../controllers/hotels.controllers.js');
 router
     .route('/hotels')
     .get(ctrlHotels.hotelsGetAll);
+//URL Parameters hotelId
+router
+    .route('/hotels/:hotelId')
+    .get(ctrlHotels.hotelsGetOne);
     
     /*
     .post(function(req,res){
