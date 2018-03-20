@@ -1,28 +1,42 @@
+var dbconn = require('../data/dbconnection.js');
 var hotelData = require('../data/hotel-data.json');
 
 module.exports.hotelsGetAll = function(req,res){
-    console.log("GET the hotel");
-    //Prints the properties of the query string from URL 
-    console.log(req.query);
-    //Sending a response with setting a http status code 
 
-    //Using values from querystring to set amount returned
-    var offset = 0;
-    var count = 5;
+    var db = dbconn.get();
+    var collection = db.collection('hotels');
 
-    if(req.query && req.query.offset){
-        offset = parseInt(req.query.offset, 10);
-    }
+    var docs = collection.find();
 
-    if(req.query && req.query.count){
-        count = parseInt(req.query.count, 10);
-    }
-
-    var returnData = hotelData.slice(offset,offset+count);
-
+    console.log("Found hotels", docs);
     res
         .status(200)
-        .json(returnData);
+        .json(docs);
+
+    console.log('db',db);
+
+    // console.log("GET the hotel");
+    // //Prints the properties of the query string from URL 
+    // console.log(req.query);
+    // //Sending a response with setting a http status code 
+
+    // //Using values from querystring to set amount returned
+    // var offset = 0;
+    // var count = 5;
+
+    // if(req.query && req.query.offset){
+    //     offset = parseInt(req.query.offset, 10);
+    // }
+
+    // if(req.query && req.query.count){
+    //     count = parseInt(req.query.count, 10);
+    // }
+
+    // var returnData = hotelData.slice(offset,offset+count);
+
+    // res
+    //     .status(200)
+    //     .json(returnData);
 };
 //Controller for single hotel
 module.exports.hotelsGetOne = function(req,res){
