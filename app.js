@@ -1,5 +1,7 @@
 //Setting up express for our app to listen
-require('./api/data/dbconnection.js').open();
+//old way to set up connection with mongodb
+//require('./api/data/dbconnection.js').open();
+require('./api/data/db.js');
 var express = require('express');
 var app = express();
 var path = require('path');
